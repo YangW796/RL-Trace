@@ -6,7 +6,6 @@ from tqdm import tqdm
 import torch
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
-import rl_utils
 
 class ReplayBuffer:
     ''' 经验回放池 '''
@@ -47,8 +46,7 @@ class DQN:
         self.target_q_net = Qnet(state_dim, hidden_dim,
                                  self.action_dim).to(device)
         # 使用Adam优化器
-        self.optimizer = torch.optim.Adam(self.q_net.parameters(),
-                                          lr=learning_rate)
+        self.optimizer = torch.optim.Adam(self.q_net.parameters(),lr=learning_rate)
         self.gamma = gamma  # 折扣因子
         self.epsilon = epsilon  # epsilon-贪婪策略
         self.target_update = target_update  # 目标网络更新频率

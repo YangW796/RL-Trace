@@ -36,4 +36,27 @@ class DQN:
         self.action_dim=action_dim
         self.q_net=Qnet(state_dim,hidden_dim,action_dim).to(device)   
         self.optimizer=torch.nn.Adam(self.q_net.parameters(),lr=learning_rate)
+        self.gamma=gamma
+        self.epsilon=epsilon
+        self.target_update=target_update 
+        self.count=0
+        self.device=device
+    
+    def take_action(self,atate):
+        if np.random().random()< self.epsilon:
+            action=np.random.randint(self.action_dim)
+        else :
+            state=torch.tensor([state],dtype=torch.float).to(self.device)
+            self.q_net(state).argmax().item()
+    
+    def update(self, transition_dict):
+        
+        return
+    
+
+            
+            
+            
+        
+        
          
